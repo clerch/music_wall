@@ -27,21 +27,15 @@ get '/tracks/new' do
   erb :'tracks/new'
 end
 
-get '/tracks' do 
-  @track = Track.find params[:id]
-  erb :'tracks/show'
-end
-
-
-# /messages?id=4567890
-
-
 get '/tracks/:id' do 
   @track = Track.find params[:id]
   erb :'tracks/show'
 end
 
-# /messages/4567890
+# post '/tracks/search' do
+#   @track = Track.where
+#   erb :'tracks/show'
+# end
 
 
 

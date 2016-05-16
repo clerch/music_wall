@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20160516040810) do
 
   create_table "tracks", force: :cascade do |t|
-    t.string "song_title"
-    t.string "author"
-    t.string "url"
+    t.string   "song_title"
+    t.string   "author"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

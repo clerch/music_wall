@@ -4,7 +4,7 @@ class AddTracks < ActiveRecord::Migration
       t.string :song_title
       t.string :author
       t.string :url
-      t.timestamp null: false
+      t.timestamps null: false
     end
 
   end
