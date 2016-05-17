@@ -7,3 +7,17 @@ text-align: center;
 font: Verdana;
 font-size: 18;
 }
+
+
+body {
+  background-color: whitesmoke;
+}
+
+main {
+background-color: white;
+padding: 16px;
+}
+
+.track {
+margin-bottom: 30px;
+}

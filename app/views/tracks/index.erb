@@ -3,13 +3,19 @@
   <a href="/tracks/new">Post a track... It's FREE (for now)!</a>
   
   <% @tracks.each do |track| %>
-    <div class="track">
-      <h3><a href="/tracks/<%= track.id %>"><%= track.song_title %> <small>(by: <%= track.author %>)</small></h3>
-      <p>
-        <%= track.url %>
-      </p>
+    
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="track">
+        <h3><a href="/tracks/<%= track.id %>"><%= track.song_title %> <small>(by: <%= track.author %>)</small></a></h3>
+        <p>
+          <%= track.url %>
+        </p>
+      </div>
+      </div>
+    </div>
     </div>
   <% end %>
-
 
 

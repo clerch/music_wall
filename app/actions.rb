@@ -59,42 +59,43 @@ get '/tracks' do
 
 
   ##this allows for us to have access to @messages in the index.erb file.
-  erb :'tracks/index'
+  erb(:'tracks/index')
+end
+
+get '/tracks/new' do 
+  @track = Track.new
+  erb(:'tracks/new')
 end
 
 post '/tracks' do
   @track = Track.new(
     url: params[:url],
     song_title: params[:song_title],
-    author: params[:author]
+    author: params[:author],
+    user_id: current_user.id
     )
   if @track.save
     redirect '/tracks'
   else
-    erb :'tracks/new'
+    erb(:'tracks/new')
   end
 end
 
-get '/tracks/new' do 
-  @track = Track.new
-  erb :'tracks/new'
-end
-
 get '/tracks/:id' do 
-  @track = Track.find params[:id]
-  erb :'tracks/show'
+  @track = Track.find(params[:id])
+  erb(:'tracks/show')
 end
 
-post '/upvote' do
-  post_id = params[:track_id]
+post '/upvotes' do
+  track_id = params[:track_id]
 
-  upvote = Upvote.new({track_id: post_id, user_id: current_user.id})
+  upvote = Upvote.new(track_id: track_id, user_id: current_user.id)
   upvote.save
 
   redirect(back)
 end
 
-delete '/upvote/:id' do
+delete '/upvotes/:id' do
   upvote = Upvote.find(params[:id])
   upvote.destroy
   redirect(back)

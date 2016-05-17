@@ -11,22 +11,71 @@
  <p>
   <%= @track.created_at %>
  </p>
+
+ <p>
+   <%= @track.user_id %>
+ </p>
  
-<p>
+
 <!-- 1. GET -->
-<a href="/upvote?track_id=<%=@track.id%>">  <!-- Google: query parameter -->
-  <%= @track.upvote_count %>
-</a>
+<!-- <a href="/upvote?track_id=<%=@track.id%>">  <!<!-  --><!-- Google: query parameter -->
+<!--   <%= @track.upvote_count %>
+</a> -->
 <!-- controller endpoint: similar to /logout -->
 
 <!-- 2. POST -->
-<form>
+<!-- <form>
   <input type="hidden" value="<%=@track.id%>"/>
   <input type="submit" value="<%= @track.upvote_count %>"/>
-</form>
+</form> -->
 <!-- controller endpoint: similar to /login -->
 
-</p>
+
+
+<div class="actions">
+  <!-- check if 'current_user' exists -->
+  <% if current_user %>
+
+  <!--check to see if user already has a like for given post -->
+  <% if upvote = current_user.upvotes.find_by({track_id: @track.id}) %>
+
+    <!-- display a form to delete that like the user already have -->
+    <form action="/upvotes/<%= upvote.id %>" method="POST">
+      <input name="_method" type="hidden" value="delete">
+      <button class="button user-like" type="submit">
+        <%= @track.upvote_count %> likes
+      </button>
+    </form>
+
+  <% else %>
+
+
+
+    <!-- display our existing form to create a like -->
+      <form action="/upvotes" method="POST">
+        <input type="hidden" name="track_id" value="<%= @track.id %>">
+        <button class="button" type="submit">
+          <%= @track.upvote_count %> likes
+        </button>
+      </form>
+  <% end %>
+  <% else %>
+
+
+    <!-- show like count without any form -->
+    <%= @track.upvote_count %> likes
+  <% end %>
+
+
+</div>
+
+
+
+
+
+
+
 
  <hr/>
  <a href="/tracks">Back to All Tracks</a>
+
