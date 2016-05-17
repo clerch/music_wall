@@ -9,8 +9,10 @@ class Track < ActiveRecord::Base
 
 
   def upvote_count
-    self.upvotes.size
+    self.upvotes.count
   end
+
+
 
 
 end

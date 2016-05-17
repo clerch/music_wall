@@ -55,7 +55,7 @@ end
 
 
 get '/tracks' do 
-  @tracks = Track.all
+  @tracks = Track.all.sort_by(&:upvote_count).reverse
 
 
   ##this allows for us to have access to @messages in the index.erb file.

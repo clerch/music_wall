@@ -1,5 +1,5 @@
 
-
+<main role="main">
 <%# This is how you have a loop for displaying errors%>
 <div class="container-fluid">
 <div class="row">
@@ -32,7 +32,7 @@
     </div>
      <div class="form-group">
       <label>URL:</label>
-      <input type="text" class="form-control" name="url" value="<%= @track.url %>">
+      <a class="url-link" href="<%= @track.url %>"><input type="text" class="form-control" name="url" value="<%= @track.url %>"></a>
     </div>
     <div class="form-group">
       <input type="submit" class="btn btn-default" value="Submit">
@@ -41,3 +41,4 @@
   </div>
 </div>
 </div>
+</main>
